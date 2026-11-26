@@ -13,7 +13,7 @@ export default async function handler(request, response) {
 
     try {
       const sql = neon(databaseUrl, {fetchOptions: {signal: AbortSignal.timeout(3500)}});
-      await sql`SELECT 1 FROM pilot_requests LIMIT 0`;
+      await sql`SELECT id FROM pilot_requests LIMIT 0`;
       return json(response, 200, {available: true});
     } catch {
       return json(response, 200, {available: false});

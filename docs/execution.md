@@ -1,42 +1,57 @@
-# Provisional execution map
+# Master implementation tracker
 
-This is a 36-item working map derived from the supplied Founder Executive Mandate. The source Master Blueprint was unavailable when this baseline was made. Reconcile the IDs and acceptance criteria against it before claiming canonical coverage.
+The work package identifiers and names below are from section 40 of the Founder-supplied Master Venture Blueprint V1.0. The evidence column records the current implementation slice. Owners are accountable roles until a named person takes each assignment.
 
-| # | Package | Owner role | Acceptance evidence | State |
-|---:|---|---|---|---|
-| 01 | Independent brand and positioning | Founder | Live dedicated VELTARIS surface | Live |
-| 02 | Temporary development hosting | Engineering | Vercel deployment ID and public smoke checks | Live |
-| 03 | Public product landing | Product | Responsive landing and navigation pass | Live |
-| 04 | Pilot offer and qualification | Founder | Defined scope, price hypothesis and acceptance | Draft |
-| 05 | Private pilot intake | Engineering | Synthetic submission persisted once and independently read back | API implemented, database pending |
-| 06 | Pilot invoicing | Founder | VELTARIS invoice and settled funds receipt | Pending |
-| 07 | Buyer pipeline | Sales | Confirmed buyer role, need, budget and next date | Research targets |
-| 08 | Benchmark reviews | Product | Source-linked matrix and validated gap ranking | Baseline |
-| 09 | Facility origination | Engineering | Add and edit records; validate terms | Sample live |
-| 10 | Pipeline views | Engineering | Stage, asset and text filters recalculate totals | Sample live |
-| 11 | Document ingestion | Engineering | Authenticated upload, restricted retrieval and retention | Pending |
-| 12 | Document intelligence | Engineering | Extracted fields linked to source passages and reviewed | Pending |
-| 13 | Structuring models | Product | Validated snapshots for fees, waterfall and obligations | Pending |
-| 14 | Servicing projections | Engineering | Deterministic dates, interest and maturity principal | Sample live |
-| 15 | Data exports | Engineering | Accurate filtered portfolio and facility CSVs | Sample live |
-| 16 | Tenant identity and permissions | Engineering | Cross-tenant access denied and verified | Pending |
-| 17 | Operational audit trail | Engineering | Append-only facility events and correction evidence | Pending |
-| 18 | Cash ledger | Engineering | Balanced entries and replay-safe posting | Pending |
-| 19 | Reconciliation | Engineering | Control-total tie-out and discrepancy disposition | Pending |
-| 20 | API and versioning | Engineering | Pilot endpoint documented; later versioned operation APIs | Pilot API only |
-| 21 | Webhooks and integrations | Engineering | Verified signatures, retries and replay tests | Pending |
-| 22 | Automated checks | Engineering | CI and independent release verification evidence | Workflow and local checks |
-| 23 | Backup, retention and recovery | Engineering | Restore into separate environment and test retention deletion | Pending |
-| 24 | Investor portal | Product | Role-aware onboarding, holdings and reporting | Pending |
-| 25 | Instrument registry | Engineering | Rights metadata and immutable version references | Pending |
-| 26 | Transfer restrictions | Engineering | Policy, identity and negative-case tests | Pending |
-| 27 | Issuance partner adapter | Partnership | Authorized partner scope plus sandbox/reconciliation receipts | Pending |
-| 28 | Custody partner adapter | Partnership | Roles and sandbox reconciliation | Pending |
-| 29 | Dealer and compliance operating model | Founder | Written qualified review by activity and jurisdiction | Pending |
-| 30 | Capital events and distributions | Engineering | Events reconcile against independently verified input | Pending |
-| 31 | Customer success | Pilot owner | Baseline and confirmed customer outcome | Pending |
-| 32 | Operational runtime | Engineering | Persistent ownership, schedule, retries and receipts | CI baseline |
-| 33 | Financial model | Founder | Cash and scenarios grounded in invoices and costs | Scenario draft |
-| 34 | Fundraising and diligence | Founder | Private indexed data room and qualified investor pipeline | Index and targets drafted |
-| 35 | Migration and scaling | Engineering | Export and restore app, database and configuration | Migration procedure drafted |
-| 36 | Institutional expansion | Founder | Paid renewal or signed adjacent-market design partner | Pending |
+| ID | Blueprint work package | Owner | Acceptance | Evidence and status |
+|---|---|---|---|---|
+| WP01 | Venture Foundation | Founder | Independent brand, repo, IP and entity records | Brand, repo and strategy recorded. Entity and IP records pending. |
+| WP02 | Market Research | Research lead | Sourced account dataset and recorded interviews | Benchmark matrix and initial targets. Interviews pending. |
+| WP03 | Brand Identity | Design lead | Approved brand system and usable assets | Navy, ice, and gold direction in live UI. Full brand standards pending. |
+| WP04 | Corporate Web | Product | Public corporate routes and pilot funnel | Landing, pilot request, workspace, lab and developer quickstart. |
+| WP05 | Design System | Design lead | Documented reusable responsive components | Shared CSS foundations and responsive page components. |
+| WP06 | Organization Auth | Engineering | OIDC, membership and role tests | Pending. |
+| WP07 | Tenant Isolation | Engineering | Tenant enforcement and cross-tenant denial tests | Pilot database isolated from other ventures. App tenant isolation pending. |
+| WP08 | Asset Registry | Engineering | Persistent assets with authorized change history | Sample facility register. Persistent registry pending. |
+| WP09 | Data Room | Engineering | Private files, authorized download and retention tests | Pending. |
+| WP10 | AI Extraction | Engineering | Reviewed source-linked extractions and quality metrics | Pending. |
+| WP11 | Financial Intelligence | Credit lead | Validated financial and risk calculations | Interactive venture assumptions. Asset intelligence pending. |
+| WP12 | Credit Engine | Engineering | Validated terms and deterministic payment calculations | Sample facility terms, schedule and maturity tests. |
+| WP13 | Instrument Builder | Engineering | Versioned terms and deterministic instrument calculations | Stateless CAD principal and whole-unit preview. |
+| WP14 | Policy Engine | Engineering | Identity-linked, versioned transfer rules and denial evidence | Sample pause, eligibility and balance checks. |
+| WP15 | Token Factory | Engineering | Permissioned EVM test issuance and lifecycle receipt | Off-chain simulation. Contract deployment pending. |
+| WP16 | Contract Testing | Engineering | Foundry tests for token and administration | JavaScript simulator tests. Smart contract tests pending. |
+| WP17 | Portfolio Dashboard | Product | Portfolio views with controlled totals and validated exports | Sample balances, filtering and CSV export. |
+| WP18 | Investor Portal | Product | Authorized holdings, documents and activity | Pending. |
+| WP19 | Ledger | Finance engineering | Balanced entries, replay and correction tests | Pending. |
+| WP20 | Reconciliation | Finance engineering | Idempotent matching and exception evidence | Pilot request idempotency only. Financial reconciliation pending. |
+| WP21 | Servicing | Credit operations | Verified repayments, exceptions and lifecycle evidence | Sample cash-flow schedule. Actual servicing pending. |
+| WP22 | Payments & Billing | Founder and finance | Dedicated software invoice and reconciled settlement | Pilot request intake. Payment account, invoice and receipt pending. |
+| WP23 | Developer API | Engineering | Documented versioned routes and working sandbox | Versioned issuance simulation endpoint. |
+| WP24 | Developer Docs | Engineering | OpenAPI contract and verified quickstart | First endpoint documented and illustrated. |
+| WP25 | White-label | Product | Tenant branding and enterprise configuration | Pending. |
+| WP26 | Sales CRM | Commercial lead | Private intake plus owner, stage, next action and outcome | Pilot records persist in dedicated database. CRM pipeline UI pending. |
+| WP27 | Partner Console | Partnerships lead | Authorized partner workspaces and contracts | Targets identified. Console and agreements pending. |
+| WP28 | Investor Data Room | Founder | Private material index, access and audited sharing | Inventory and target list. Private room pending. |
+| WP29 | Agent Runtime | Engineering | Persistent missions, ownership and evidence | Scheduled GitHub checks configured. Commercial and partner runtime pending. |
+| WP30 | Security & Trust | Engineering | Least privilege, data handling, restore and access tests | Separate database role and deployment headers. Customer workspace controls pending. |
+| WP31 | Production QA | Independent reviewer | Live routes, functional tests and deploy receipts | Unit and browser verification for released slices. |
+| WP32 | Growth Engine | Commercial lead | Sourced pipeline and observed funnel conversion | Public pilot request channel. Buyer discovery and conversion pending. |
+| WP33 | Customer Support | Pilot owner | Support intake, response SLA and resolution evidence | Pending. |
+| WP34 | Analytics | Product | Trustworthy funnel and servicing measurements | Local models. Customer and operational analytics pending. |
+| WP35 | Global Expansion | Founder | Geography selection backed by customer and partner evidence | Canada-first strategy. International evidence pending. |
+| WP36 | Continuous Improvement | Engineering | Recurring release reviews and tracked outcomes | GitHub smoke workflow and release tests. |
+
+## Blueprint waves
+
+| Wave | Blueprint window | Milestone |
+|---|---|---|
+| 01 Venture Foundation | Days 1–7 | Brand, source control, foundation and target account dataset |
+| 02 Commercial Activation | Days 8–21 | Website, discovery intake, commercial proposal and billing |
+| 03 Functional MVP | Days 15–45 | Organization, asset registry, data room, reporting and API |
+| 04 Tokenization Lab | Days 30–60 | Permissioned EVM test issuance and lifecycle verification |
+| 05 First Revenue & Pilot | Days 30–90 | Paid customer outcomes and measured operational value |
+| 06 Financial Partner Integration | Months 3–6 | Defined partner roles, partner adapters and servicing |
+| 07 Institutional Expansion | Months 4–9 | White-label, institutional reporting and network expansion |
+| 08 Seed & Market Expansion | Months 6–12 | Evidence-based fundraising and geographic validation |
+
+The windows are blueprint targets. The tracker records shipped functionality, sample flows, signed agreements and settled revenue as distinct evidence.

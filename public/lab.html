@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore illustrative VELTARIS venture economics, ownership and permissioned issuance scenarios.">
+  <title>Capital Lab | VELTARIS Capital</title>
+  <link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/lab.css">
+  <script type="module" src="/lab.mjs"></script>
+</head>
+<body>
+<header class="shell mast"><a class="brand" href="/" aria-label="VELTARIS Capital home"><i aria-hidden="true"></i><span>VELTARIS <small>CAPITAL</small></span></a><nav aria-label="Main navigation"><a href="/workspace.html">Credit workspace</a><a class="button compact" href="/#pilot">Request a pilot ↗</a></nav></header>
+<main>
+<section class="lab-hero"><div class="shell">
+  <p class="eyebrow">DEVELOPER SANDBOX</p><h1>Capital Lab</h1>
+  <p>Model a permissioned debt instrument, test transfer rules, and explore the economics of an infrastructure business. All outputs are illustrative.</p>
+  <nav aria-label="Lab sections"><a href="#issuance">Issuance simulation</a><a href="#economics">Venture economics</a><a href="#ownership">Ownership</a></nav>
+</div></section>
+<div class="shell lab-body">
+  <section class="lab-card" id="issuance">
+    <div class="lab-heading"><p class="eyebrow">TOKEN STUDIO</p><h2>Issuance simulation</h2><p>Define the terms in CAD cents and run a sample transfer. Eligibility switches represent fictional verification results.</p></div>
+    <div class="lab-grid">
+      <form id="issuance-form">
+        <div class="form-grid">
+          <label>Principal (cents)<input type="number" name="principalCents" required min="1" max="100000000000" value="10000000"></label>
+          <label>Unit price (cents)<input type="number" name="unitPriceCents" required min="1" max="1000000000" value="10000"></label>
+          <label>Sender holdings (units)<input type="number" name="holdingUnits" required min="0" max="100000000000" value="200"></label>
+          <label>Requested transfer (units)<input type="number" name="requestedUnits" required min="1" max="100000000000" value="75"></label>
+        </div>
+        <div class="toggle-list"><label><input type="checkbox" name="senderVerified" checked> Sender eligible</label><label><input type="checkbox" name="recipientVerified" checked> Recipient eligible</label><label><input type="checkbox" name="paused"> Transfers paused</label></div>
+        <button class="button" type="submit">Run simulation →</button>
+        <p id="issuance-status" role="status"></p>
+      </form>
+      <div class="lab-result" aria-live="polite">
+        <h3>Sample transfer result</h3><p id="token-result">Run the scenario to calculate the projected supply and transfer decision.</p>
+        <dl class="results"><div><dt>Proposed supply</dt><dd id="issued-units">—</dd></div><div><dt>Sender after transfer</dt><dd id="sender-units">—</dd></div><div><dt>Recipient after transfer</dt><dd id="recipient-units">—</dd></div><div><dt>Simulated transfer value</dt><dd id="transfer-value">—</dd></div></dl>
+        <p>This lab runs off-chain. It creates no token, security, legal eligibility determination, or payment.</p>
+        <a href="/developer.html">API quickstart →</a>
+      </div>
+    </div>
+  </section>
+  <section class="lab-card" id="economics">
+    <div class="lab-heading"><p class="eyebrow">VENTURE MODEL</p><h2>Venture economics</h2><p>Adjust contract values, recurring software and servicing revenue assumptions, and operating costs.</p></div>
+    <div class="lab-grid">
+      <form id="economics-form">
+        <div class="form-grid">
+          <label>Institutional customers<input type="number" name="customers" min="0" max="100000" value="40" required></label>
+          <label>Annual contract value (CAD)<input type="number" name="contract" min="0" max="10000000" step="0.01" value="50000" required></label>
+          <label>Serviced assets (CAD)<input type="number" name="serviced" min="0" max="100000000000" step="0.01" value="100000000" required></label>
+          <label>Annual servicing fee (%)<input type="number" name="fee" min="0" max="100" step="0.01" value="0.30" required></label>
+          <label>Gross margin (%)<input type="number" name="margin" min="0" max="100" step="0.01" value="75" required></label>
+          <label>Annual operating costs (CAD)<input type="number" name="opex" min="0" max="100000000000" step="0.01" value="1200000" required></label>
+          <label>Revenue multiple<input type="number" name="multiple" min="0" max="100" step="0.1" value="10" required></label>
+        </div>
+        <button class="button" type="submit">Update scenario</button><p id="economics-status" role="status"></p>
+      </form>
+      <div class="lab-result" aria-live="polite"><h3>Annual scenario</h3>
+        <dl class="results"><div><dt>Software revenue</dt><dd id="software">—</dd></div><div><dt>Servicing revenue</dt><dd id="servicing">—</dd></div><div><dt>Total annual revenue</dt><dd id="revenue">—</dd></div><div><dt>Operating income</dt><dd id="operatingIncome">—</dd></div><div><dt>Operating margin</dt><dd id="operatingMargin">—</dd></div><div><dt>Implied enterprise value</dt><dd id="valuation">—</dd></div></dl>
+        <p>Single revenue multiple. The model excludes taxes, financing, depreciation and working capital.</p>
+      </div>
+    </div>
+  </section>
+  <section class="lab-card" id="ownership">
+    <div class="lab-heading"><p class="eyebrow">CAP TABLE</p><h2>Ownership after a round</h2><p>Explore a simplified priced equity round with a pre-money option pool.</p></div>
+    <div class="lab-grid">
+      <form id="ownership-form">
+        <div class="form-grid">
+          <label>Pre-money value (CAD)<input type="number" name="preMoney" min="0.01" max="100000000000" step="0.01" value="5000000" required></label>
+          <label>New investment (CAD)<input type="number" name="investment" min="0" max="100000000000" step="0.01" value="1000000" required></label>
+          <label>Co-founder before round (%)<input type="number" name="cofounder" min="0" max="100" step="0.01" value="10" required></label>
+          <label>Option pool before round (%)<input type="number" name="pool" min="0" max="100" step="0.01" value="10" required></label>
+        </div>
+        <button class="button" type="submit">Calculate dilution</button><p id="ownership-status" role="status"></p>
+      </form>
+      <div class="lab-result" aria-live="polite"><h3>Post-money ownership</h3>
+        <dl class="results"><div><dt>Founder</dt><dd id="founder">—</dd></div><div><dt>Co-founder</dt><dd id="cofounder">—</dd></div><div><dt>Option pool</dt><dd id="pool">—</dd></div><div><dt>New investors</dt><dd id="investors">—</dd></div><div><dt>Post-money value</dt><dd id="postMoney">—</dd></div></dl>
+        <p>Simple common equity model. SAFEs, warrants, preferred terms and voting rights are outside this calculation.</p>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+<footer class="shell footer"><a class="brand" href="/"><i aria-hidden="true"></i><span>VELTARIS <small>CAPITAL</small></span></a><p>Private credit operations and capital infrastructure software.</p><a href="/workspace.html">Credit workspace ↗</a></footer>
+</body>
+</html>

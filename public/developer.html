@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Use the VELTARIS Capital issuance simulation API and OpenAPI contract.">
+  <title>Developer Quickstart | VELTARIS Capital</title>
+  <link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/lab.css">
+</head>
+<body>
+<header class="shell mast"><a class="brand" href="/" aria-label="VELTARIS Capital home"><i aria-hidden="true"></i><span>VELTARIS <small>CAPITAL</small></span></a><nav aria-label="Main navigation"><a class="button compact" href="/lab.html#issuance">Open Capital Lab ↗</a></nav></header>
+<main>
+<section class="lab-hero"><div class="shell"><p class="eyebrow">VELTARIS DEVELOPER</p><h1>Issuance API</h1><p>Preview proposed units and a transfer decision using sample terms. The endpoint evaluates a single scenario without holding state or signing a transaction.</p></div></section>
+<section class="shell lab-body"><article class="lab-card">
+<h2>Quickstart</h2><p>Send a JSON object to <code>POST /v1/issuance/simulate</code>. Monetary inputs use integer CAD cents. The principal must divide evenly by unit price.</p>
+<pre class="code-example"><code>curl https://veltaris-capital.vercel.app/v1/issuance/simulate \
+  -H 'content-type: application/json' \
+  -d '{"principalCents":10000000,"unitPriceCents":10000,
+       "holdingUnits":200,"requestedUnits":75,
+       "senderVerified":true,"recipientVerified":true,"paused":false}'</code></pre>
+<p>Expect a proposed supply of 1,000 units, a simulated transfer of 75 units worth CAD 7,500, and 125 units remaining with the sender. A policy rejection returns HTTP 200 with <code>allowed: false</code> and reason codes. Invalid terms return HTTP 400.</p>
+<div class="actions"><a class="button" href="/v1/openapi.json">View OpenAPI contract ↗</a><a class="button light" href="/lab.html#issuance">Try in Capital Lab</a></div>
+</article></section>
+</main>
+</body>
+</html>

@@ -4,7 +4,7 @@
 
 Sell a four-week software pilot for one operations team and one workflow. Start with deal intake, servicing visibility, or portfolio exports. Use synthetic data for the initial review. For private customer data, agree access, retention, and tenant boundaries before ingestion.
 
-Proposed validation price in CAD is 2,500 for the implementation and training pilot. Propose 750 monthly for a continuing workspace after acceptance. These are test prices for the founder to validate in live buyer conversations. Compare willingness to pay, procurement time, and support load across buyers. Software fees go to a VELTARIS-designated invoice and accounts.
+Proposed validation price in CAD is 2,500 for the implementation and training pilot. The supplied blueprint proposes C$499/month for the Launch tier, C$1,999/month for Professional, and C$5,000+/month for Institutional after validation of each scope. These are test prices for the founder to validate in live buyer conversations. Compare willingness to pay, procurement time, and support load across buyers. Software fees go to a VELTARIS-designated invoice and accounts.
 
 | Moment | Required evidence |
 |---|---|
@@ -54,9 +54,9 @@ Private data room index for founder completion. Incorporation and ownership reco
 | Continuing customers | 1 | 6 | 15 |
 | Average paid subscription months per conversion | 4 | 5 | 6 |
 | Pilot fees at 2,500 each | 7,500 | 30,000 | 60,000 |
-| Subscription fees at 750/month | 3,000 | 22,500 | 67,500 |
-| Gross contracted fee scenario, before collection timing | 10,500 | 52,500 | 127,500 |
-| Ending monthly recurring revenue run-rate | 750 | 4,500 | 11,250 |
+| Subscription fees at 499/month | 1,996 | 14,970 | 44,910 |
+| Gross fee scenario, before collection timing | 9,496 | 44,970 | 104,910 |
+| Ending monthly recurring revenue run-rate | 499 | 2,994 | 7,485 |
 
 Each scenario assumes fully paid pilot and subscription amounts and zero churn among listed continuing customers. Actual cash forecasting requires invoice terms, payment timing, refunds, costs and taxes. The VELTARIS software forecast excludes customer lending volume, securities proceeds, custody, distribution fees, and token economics.
 

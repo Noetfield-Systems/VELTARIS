@@ -3,10 +3,11 @@
 Independent Canadian-origin software for private-credit operations. The temporary Vercel deployment supports product demonstrations and software-pilot scoping.
 
 - [Temporary website](https://veltaris-capital.vercel.app/)
+- [Capital Lab](https://veltaris-capital.vercel.app/lab.html) and [developer quickstart](https://veltaris-capital.vercel.app/developer.html)
 - [Credit workspace](https://veltaris-capital.vercel.app/workspace.html)
 - [Competitive feature matrix](docs/benchmarks.md)
 - [Commercial plan, fundraising and operating ownership](docs/commercial.md)
-- [Provisional 36-package execution map](docs/execution.md)
+- [Master Blueprint](docs/master-blueprint.md) and [canonical 36-package tracker](docs/execution.md)
 - [Portability and pilot API](docs/operations.md)
 
 The workspace uses fictional records and browser-session storage. It supports adding and updating facilities, stage and asset filters, stage review, fixed-interest servicing previews, and CAD CSV exports. An interest-only schedule uses month-end clamping and a maturity principal payment.

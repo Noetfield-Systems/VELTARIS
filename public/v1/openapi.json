@@ -1,0 +1,69 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "VELTARIS Capital Sandbox",
+    "version": "1.0.0",
+    "description": "Stateless, off-chain simulation. Submit fictional inputs only."
+  },
+  "servers": [{"url": "https://veltaris-capital.vercel.app"}],
+  "paths": {
+    "/v1/issuance/simulate": {
+      "post": {
+        "operationId": "simulateIssuance",
+        "summary": "Calculate whole issuance units and evaluate a sample transfer",
+        "requestBody": {
+          "required": true,
+          "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Scenario"}}}
+        },
+        "responses": {
+          "200": {"description": "Calculated supply and transfer result, including any policy reasons", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Result"}}}},
+          "400": {"description": "Invalid form, numeric limits, proposed supply, or scenario flags"},
+          "405": {"description": "Unsupported HTTP method"},
+          "413": {"description": "Body exceeds endpoint limit"},
+          "415": {"description": "Unsupported media type"}
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Scenario": {
+        "type": "object",
+        "required": ["principalCents", "unitPriceCents", "holdingUnits", "requestedUnits", "senderVerified", "recipientVerified", "paused"],
+        "properties": {
+          "principalCents": {"type": "integer", "minimum": 1, "maximum": 100000000000},
+          "unitPriceCents": {"type": "integer", "minimum": 1, "maximum": 1000000000},
+          "holdingUnits": {"type": "integer", "minimum": 0, "maximum": 100000000000},
+          "requestedUnits": {"type": "integer", "minimum": 1, "maximum": 100000000000},
+          "senderVerified": {"type": "boolean"},
+          "recipientVerified": {"type": "boolean"},
+          "paused": {"type": "boolean"}
+        }
+      },
+      "Result": {
+        "type": "object",
+        "required": ["mode", "currency", "issuedUnits", "principalCents", "unitPriceCents", "transfer"],
+        "properties": {
+          "mode": {"const": "simulation"},
+          "currency": {"const": "CAD"},
+          "issuedUnits": {"type": "integer"},
+          "principalCents": {"type": "integer"},
+          "unitPriceCents": {"type": "integer"},
+          "transfer": {
+            "type": "object",
+            "required": ["allowed", "reasons", "requestedUnits", "settledUnits", "senderAfter", "recipientAfter", "transferValueCents"],
+            "properties": {
+              "allowed": {"type": "boolean"},
+              "reasons": {"type": "array", "items": {"enum": ["TRANSFERS_PAUSED", "SENDER_INELIGIBLE", "RECIPIENT_INELIGIBLE", "INSUFFICIENT_HOLDINGS"]}},
+              "requestedUnits": {"type": "integer"},
+              "settledUnits": {"type": "integer"},
+              "senderAfter": {"type": "integer"},
+              "recipientAfter": {"type": "integer"},
+              "transferValueCents": {"type": "integer"}
+            }
+          }
+        }
+      }
+    }
+  }
+}

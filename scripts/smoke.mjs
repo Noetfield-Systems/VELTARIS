@@ -4,6 +4,9 @@ const base = process.env.VELTARIS_BASE_URL || 'https://veltaris-capital.vercel.a
 const routes = [
   ['/', /VELTARIS Capital/],
   ['/workspace.html', /Credit workspace/],
+  ['/lab.html', /Capital Lab/],
+  ['/developer.html', /Issuance API/],
+  ['/v1/openapi.json', /simulateIssuance/],
   ['/api/health', /"service":"veltaris-capital"/],
 ];
 const results = await Promise.all(routes.map(async ([route, expected]) => {
@@ -17,5 +20,5 @@ for (const result of results) console.log(result);
 const pilot = await fetch(new URL('/api/pilot', base), {signal: AbortSignal.timeout(20000)});
 assert.equal(pilot.status, 200);
 const status = await pilot.json();
-assert.equal(typeof status.available, 'boolean');
+assert.equal(status.available, true, 'Dedicated pilot storage is unavailable');
 console.log('Pilot storage reachable:', status.available);
