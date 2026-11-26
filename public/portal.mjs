@@ -177,12 +177,14 @@ function show(data) {
   state.data = data;
   byId('access').hidden = !!data;
   byId('signout').hidden = !data;
+  byId('return-access').hidden = !data;
   byId('operator').hidden = data?.role !== 'operator';
   byId('work').hidden = !data || data.role === 'operator';
   if (!data) {
     state.selected = state.edit = state.lead = null;
     clearInvite('member-link');
     clearInvite('operator-link');
+    clearInvite('return-link');
     for (const id of ['facilities','payments','documents','activity','leads']) byId(id).replaceChildren();
     for (const id of ['organization','member','lead-title','borrower','total','count','documents-count','lead-count']) byId(id).textContent = '';
     for (const id of ['facility-dialog','lead-dialog']) byId(id).close();
@@ -229,6 +231,21 @@ attachForm(form('activate'), ({invitation}) => activate(invitation.trim()));
 byId('signout').addEventListener('click', async () => {
   try { await api({action:'signout'}); show(null); status('Signed out.'); }
   catch (error) { if (error.status === 401) show(null); status(error.message); }
+});
+
+byId('return-button').addEventListener('click', async () => {
+  const button = byId('return-button');
+  button.disabled = true;
+  try {
+    const result = await api({action:'return-invite'});
+    inviteLink('return-link',result.invitation);
+    status('Save the return link privately before signing out.');
+  } catch (error) {
+    if (error.status === 401) show(null);
+    status(error.message);
+  } finally {
+    button.disabled = false;
+  }
 });
 
 byId('add').addEventListener('click', () => openFacility());

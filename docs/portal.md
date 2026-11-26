@@ -4,7 +4,7 @@ The [institutional workspace](https://veltaris-capital.vercel.app/portal.html) u
 
 ## Private pilot access
 
-The operator passes a single-use activation link privately to the named recipient. The link expires after 48 hours. Activation creates a 12-hour, revocable, Secure, HttpOnly browser session. Sign out at the end of a shared-device session. For access renewal, ask the operator or the organization owner for a fresh invitation. Pilot access uses a bearer invitation and an opaque session. Account sign-in, OIDC and MFA remain future identity work.
+The operator passes a single-use activation link privately to the named recipient. The link expires after 48 hours. Activation creates a 12-hour, revocable, Secure, HttpOnly browser session. Sign out at the end of a shared-device session. Before signing out, use Create return link to store a single-use, seven-day return link privately. Creating another returns a fresh link and expires the previous one. If the session and return link are unavailable, ask an authorized operator or database owner to issue a new invitation. Pilot access uses a bearer invitation and an opaque session. Account sign-in, OIDC and MFA remain future identity work.
 
 Each organization can hold up to 100 facilities and 20 documents. Documents accept PDF, CSV and UTF-8 text, up to 2 MiB each, and are stored as Postgres byte arrays within the dedicated VELTARIS database. Document responses are authenticated, served as downloads, and recorded in the workspace activity feed. Source documents can contain additional specialist confidentiality or location requirements. Agree the pilot's scope and retention before loading live borrower records. Pilot documents are stored in the dedicated Neon database in the United States.
 

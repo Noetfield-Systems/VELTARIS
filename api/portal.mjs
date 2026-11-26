@@ -34,6 +34,8 @@ function existingId(value) {
 
 function command(body) {
   switch (body.action) {
+    case 'return-invite':
+      return null;
     case 'facility': {
       const id = body.id == null ? null : existingId(body.id);
       if (id && (!Number.isInteger(body.version) || body.version < 1 || body.version > 2147483647)) throw new Error('Refresh the facility before editing.');
@@ -115,6 +117,12 @@ export default async function handler(req, res) {
         await sql`SELECT portal.sign_out(${key})`;
         res.setHeader('set-cookie', cookie('', 0));
         return res.status(200).json({active:false});
+      case 'return-invite': {
+        const invitation = token();
+        const result = await query(sql`SELECT portal.return_invitation(${key},${digest(invitation)}) AS result`);
+        if (!result || result.error) return reply(res, result);
+        return reply(res, {invitation});
+      }
       case 'facility':
         return reply(res, await query(sql`SELECT portal.save_facility(${key},${input.id}::uuid,${input.version}::int,${JSON.stringify(input)}::jsonb) AS result`));
       case 'upload':
