@@ -43,3 +43,7 @@ We’re opening a four-week software pilot for Canadian private credit and speci
 Review LinkedIn spend, impressions, clicks and click-through rate alongside submitted requests by campaign and creative. In the operator console, review requests for fit and track qualified conversations, proposals, accepted scope and verified receipts separately. Accepted pilot requests are forms successfully stored. Paid conversion requires confirmed payment to a VELTARIS-owned collection arrangement. Use attributed qualified requests and cost per qualified request to compare creative after there is enough signal.
 
 The creatives and founder copy are launch assets. Platform review, campaign activation and delivery are tracked separately.
+
+## Live campaign reporting
+
+The VELTARIS operator portal shows a rolling 30-day UTC report for the three shipped tagged links. It records anonymous aggregate landing loads, demo opens, sample matches, and pilot CTA clicks. Submitted requests come from the pilot database, and the pipeline count uses their current CRM stages. Page events count repeats, and the portal does not ingest platform spend or impressions. Each event increments only a daily counter. The event endpoint stores no contact details, browser identifiers, cookies, or IP addresses in the campaign table.

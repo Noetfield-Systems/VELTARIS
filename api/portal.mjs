@@ -107,6 +107,7 @@ export default async function handler(req, res) {
     const sql = neon(databaseUrl, {fetchOptions:{signal:AbortSignal.timeout(12000)}});
     if (req.method === 'GET') {
       const params = new URL(req.url, 'https://workspace.invalid').searchParams;
+      if (params.has('campaign')) return reply(res, await query(sql`SELECT portal.campaign_report(${key}) AS result`));
       const servicingId = params.get('servicing');
       if (servicingId) {
         if (!isId(servicingId)) return reply(res, {error:'not_found'});

@@ -67,7 +67,25 @@ function attachForm(node, operation, errorId = null) {
   });
 }
 
+async function renderCampaign(data) {
+  const table = byId('campaign-report');
+  const period = byId('campaign-period');
+  try {
+    const report = await api(null,'?campaign=launch');
+    if (state.data !== data) return;
+    table.replaceChildren();
+    const labels = {'control-landscape':'Control landscape','journal-square':'Journal square','founder-post':'Founder organic'};
+    for (const row of report.variants) {
+      tableRow(table.insertRow(),[labels[row.variant],row.landing,row.demo,row.demo_match,row.pilot_intent,row.requests,row.in_pipeline]);
+    }
+    period.textContent = report.from+' to '+report.through+' UTC · Site events are totals, not unique visitors.';
+  } catch (error) {
+    if (state.data === data) period.textContent = error.message;
+  }
+}
+
 function renderOperator(data) {
+  renderCampaign(data);
   byId('lead-count').textContent = data.leads.length + ' recent requests';
   const list = byId('leads');
   list.replaceChildren();
@@ -192,7 +210,7 @@ function show(data) {
     clearInvite('operator-link');
     clearInvite('return-link');
     servicing.clear();
-    for (const id of ['facilities','payments','documents','activity','leads']) byId(id).replaceChildren();
+    for (const id of ['facilities','payments','documents','activity','leads','campaign-report']) byId(id).replaceChildren();
     for (const id of ['organization','member','lead-title','borrower','total','count','documents-count','lead-count']) byId(id).textContent = '';
     for (const id of ['facility-dialog','lead-dialog']) byId(id).close();
     facilityForm.reset();

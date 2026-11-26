@@ -1,4 +1,4 @@
-import {campaignTags,carryCampaign} from './campaign.mjs';
+import {campaignTags,carryCampaign,recordCampaign} from './campaign.mjs';
 
 const form = document.querySelector('#pilot-form');
 const status = document.querySelector('#pilot-status');
@@ -6,6 +6,10 @@ const button = form.querySelector('button');
 const fields = form.querySelectorAll('input, select, textarea');
 const attribution = {...campaignTags(location.href), entry_page: location.pathname};
 carryCampaign();
+recordCampaign('landing');
+for (const link of document.querySelectorAll('a[href="#pilot"]')) {
+  link.addEventListener('click',() => recordCampaign('pilot_intent'));
+}
 let requestId = crypto.randomUUID();
 
 try {

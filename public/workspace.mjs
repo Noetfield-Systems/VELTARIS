@@ -1,4 +1,4 @@
-import {carryCampaign} from './campaign.mjs';
+import {carryCampaign,recordCampaign} from './campaign.mjs';
 import {ASSETS, STAGES, SAMPLE, facilityFromInput, paymentSchedule, csv} from './credit.mjs';
 
 const byId = (id) => document.getElementById(id);
@@ -173,6 +173,8 @@ if (demoMatch) demoMatch.addEventListener('click', () => {
     ? 'Sample match complete. Journal debits and credits both total C$12,500.00.'
     : 'Statement line DEMO-042 · C$12,500.00';
   demoMatch.textContent = matched ? 'Reset sample' : 'Match sample receipt';
+  if (matched) recordCampaign('demo_match');
 });
 
 carryCampaign();
+recordCampaign('demo');

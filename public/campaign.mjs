@@ -18,3 +18,16 @@ export function carryCampaign() {
     link.href = target.href;
   }
 }
+
+export function recordCampaign(event) {
+  const tags = campaignTags(location.href);
+  const variant = tags.utm_content?.toLowerCase();
+  const paid = (variant === 'control-landscape' || variant === 'journal-square') && tags.utm_medium?.toLowerCase() === 'paid-social';
+  const organic = variant === 'founder-post' && tags.utm_medium?.toLowerCase() === 'organic-social';
+  if ((!paid && !organic) || tags.utm_source?.toLowerCase() !== 'linkedin' || tags.utm_campaign?.toLowerCase() !== 'private-credit-launch') return;
+  const body = JSON.stringify({variant,event});
+  const beacon = new Blob([body],{type:'application/json'});
+  if (!navigator.sendBeacon?.('/api/campaign',beacon)) {
+    fetch('/api/campaign',{method:'POST',headers:{'content-type':'application/json'},body,keepalive:true}).catch(() => {});
+  }
+}
