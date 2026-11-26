@@ -213,9 +213,17 @@ async function activate(invitation) {
   status('Workspace opened.');
 }
 
-const fragment = new URLSearchParams(location.hash.slice(1));
-const incoming = fragment.get('invite');
-if (incoming) history.replaceState(null,'',location.pathname+location.search);
+function loadInvitation() {
+  const invitation = new URLSearchParams(location.hash.slice(1)).get('invite');
+  if (!invitation) return false;
+  history.replaceState(null,'',location.pathname+location.search);
+  show(null);
+  form('activate').elements.invitation.value = invitation;
+  status('Invitation loaded. Select Open workspace to activate it.');
+  return true;
+}
+
+window.addEventListener('hashchange', loadInvitation);
 attachForm(form('activate'), ({invitation}) => activate(invitation.trim()));
 
 byId('signout').addEventListener('click', async () => {
@@ -274,11 +282,11 @@ attachForm(form('invite-member'), async (fields) => {
 });
 
 try {
-  if (incoming) {
-    form('activate').elements.invitation.value = incoming;
-    status('Invitation loaded. Select Open workspace to activate it.');
-  } else show(await api());
+  if (!loadInvitation()) {
+    const current = await api();
+    if (!form('activate').elements.invitation.value) show(current);
+  }
 } catch (error) {
   show(null);
-  if (incoming || error.status !== 401) status(error.message);
+  if (error.status !== 401) status(error.message);
 }
