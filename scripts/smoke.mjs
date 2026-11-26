@@ -4,6 +4,7 @@ const base = process.env.VELTARIS_BASE_URL || 'https://veltaris-capital.vercel.a
 const routes = [
   ['/', /VELTARIS Capital/],
   ['/workspace.html', /Credit workspace/],
+  ['/portal.html', /Institutional workspace/],
   ['/lab.html', /Capital Lab/],
   ['/developer.html', /Issuance API/],
   ['/v1/openapi.json', /simulateIssuance/],
@@ -22,3 +23,7 @@ assert.equal(pilot.status, 200);
 const status = await pilot.json();
 assert.equal(status.available, true, 'Dedicated pilot storage is unavailable');
 console.log('Pilot storage reachable:', status.available);
+
+const portal = await fetch(new URL('/api/portal', base), {signal: AbortSignal.timeout(20000)});
+assert.equal(portal.status, 401, 'Anonymous portal access must be rejected');
+console.log('Anonymous portal access rejected');

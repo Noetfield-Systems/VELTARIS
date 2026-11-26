@@ -1,0 +1,22 @@
+[hidden]{display:none!important}
+.access-card{max-width:630px;margin:24px auto;background:white;border:1px solid var(--line);border-radius:8px;padding:clamp(19px,5vw,36px)}
+.access-card h1{font-size:clamp(42px,8vw,67px);line-height:1;margin-bottom:15px}
+.access-card p{color:var(--slate)}
+.access-card form{margin:15px 0}
+.access-card a,.document-list a{color:#164b3e;text-decoration:underline;text-underline-offset:3px}
+.portal-notice:empty{display:none}
+.portal-notice{background:#eaf0ec;padding:10px 14px;border-radius:5px}
+.panel-body{padding:14px 20px 20px}
+.panel-body h3{font-size:22px}
+.portal-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;align-items:start}
+.portal-form button{justify-self:start}
+.document-list{list-style:none;margin:10px 0;padding:0}
+.document-list li{border-bottom:1px solid var(--line);padding:8px 0;overflow-wrap:anywhere}
+.lead-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.lead-entry{border:1px solid var(--line);border-radius:6px;padding:13px;overflow-wrap:anywhere}
+.lead-entry p{margin:.35rem 0;color:var(--slate);font-size:13px}
+.lead-entry button{margin-top:5px}
+#member-link,#operator-link{margin-top:15px}
+#member-link input,#operator-link input{width:100%;margin-top:5px}
+#facility-error,#lead-error{margin-top:5px;font-size:13px}
+@media(max-width:650px){.lead-list,.portal-form{grid-template-columns:1fr}.panel-body{padding:13px}.workspace-top .actions{gap:8px}}

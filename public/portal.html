@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><title>Institutional Workspace | VELTARIS Capital</title>
+<link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/workspace.css"><link rel="stylesheet" href="/portal.css">
+<script type="module" src="/portal.mjs"></script>
+</head>
+<body>
+<header class="shell mast"><a class="brand" href="/" aria-label="VELTARIS Capital home"><i aria-hidden="true"></i><span>VELTARIS <small>CAPITAL</small></span></a><nav aria-label="Primary"><a href="/workspace.html">Sample workspace</a><button id="signout" type="button" class="button compact" hidden>Sign out</button></nav></header>
+<main class="shell desk">
+<p id="notice" class="portal-notice" role="status"></p>
+<section id="access" class="access-card">
+  <p class="eyebrow">FOUNDING INSTITUTIONAL PROGRAM</p><h1>Institutional workspace</h1>
+  <p>Activate your single-use invitation to open your organization’s workspace.</p>
+  <form id="activate" method="post"><label>Invitation code<input name="invitation" autocomplete="off" spellcheck="false" required maxlength="43"></label><button class="button" type="submit">Open workspace</button></form>
+  <p><a href="/#pilot">Request institutional access</a></p>
+</section>
+<section id="work" hidden>
+  <div class="workspace-top"><div><p id="organization" class="eyebrow"></p><h1>Credit operations</h1><p id="member" class="helper"></p></div><div class="actions"><button type="button" class="button light" id="export">Export register</button><button type="button" class="button" id="add">Add facility</button></div></div>
+  <div class="metric-grid" aria-label="Portfolio summary"><article><p>Facilities</p><strong id="count">—</strong></article><article><p>Registered principal (CAD)</p><strong id="total">—</strong></article><article><p>Private documents</p><strong id="documents-count">—</strong></article></div>
+  <section class="panel"><div class="panel-head"><div><h2>Facilities</h2><p>Open a facility to view its terms, projected schedule and documents.</p></div></div>
+    <div class="filters"><label>Search facilities<input id="facility-search" type="search" placeholder="Borrower, stage or asset class"></label></div>
+    <div class="scroll-table" tabindex="0" role="region" aria-label="Facility register"><table><thead><tr><th scope="col">Borrower</th><th scope="col">Asset</th><th scope="col">Stage</th><th scope="col">Principal</th><th scope="col">Annual rate</th></tr></thead><tbody id="facilities"></tbody></table></div>
+  </section>
+  <section class="panel" id="details" hidden><div class="panel-head"><div><p class="eyebrow">FACILITY DETAILS</p><h2 id="borrower"></h2><p>Interest-only projection with principal due at maturity.</p></div><div class="actions"><button type="button" class="button light" id="export-schedule">Export schedule</button><button type="button" class="button light" id="edit">Edit facility</button></div></div>
+    <div class="scroll-table" tabindex="0" role="region" aria-label="Projected payments"><table><thead><tr><th scope="col">Period</th><th scope="col">Due</th><th scope="col">Interest</th><th scope="col">Principal</th><th scope="col">Total</th></tr></thead><tbody id="payments"></tbody></table></div>
+    <div class="panel-body"><h3>Data Room</h3><p class="helper">Documents are available to authorized organization members. Upload up to 2 MB per PDF, CSV, or text file.</p><ul id="documents" class="document-list"></ul>
+      <form id="upload" method="post"><label>Attach a document<input name="file" type="file" accept=".pdf,.csv,.txt" required></label><button type="submit" class="button light">Upload document</button></form>
+    </div>
+  </section>
+  <section class="panel" id="member-invites" hidden><div class="panel-head"><div><h2>Invite a colleague</h2><p>Editors can save facilities and documents. Viewers can read and export.</p></div></div>
+    <div class="panel-body"><form id="invite-member" method="post" class="portal-form"><label>Member name<input name="name" required maxlength="100"></label><label>Role<select name="role"><option value="viewer">Viewer</option><option value="editor">Editor</option></select></label><button class="button" type="submit">Create invitation</button></form><div id="member-link" hidden><label>Single-use invitation<input readonly></label><p>Share privately with the intended member. Expires in 48 hours.</p></div></div>
+  </section>
+  <section class="panel"><div class="panel-head"><div><h2>Recent activity</h2><p>Changes and document access for this organization.</p></div></div><div class="panel-body"><ul class="document-list" id="activity"></ul></div></section>
+</section>
+<section id="operator" hidden>
+  <div class="workspace-top"><div><p class="eyebrow">VELTARIS OPERATIONS</p><h1>Pilot intake</h1><p class="helper">Review requests, record follow-ups and issue private workspace invitations.</p></div></div>
+  <section class="panel"><div class="panel-head"><div><h2>Inbound requests</h2><p id="lead-count"></p></div></div><div id="leads" class="panel-body lead-list"></div></section>
+  <section class="panel"><div class="panel-head"><div><h2>Issue workspace access</h2><p>Start with an owner for a new organization or invite someone to an existing one.</p></div></div>
+  <div class="panel-body"><form id="provision" method="post" class="portal-form">
+    <label>Existing organization<select name="organizationId"><option value="">Create new organization</option></select></label>
+    <label>New organization name<input name="organization" required maxlength="100"></label>
+    <label>Member name<input name="name" required maxlength="100"></label>
+    <label>Role<select name="role"><option value="owner">Owner</option><option value="editor">Editor</option><option value="viewer">Viewer</option></select></label>
+    <button class="button" type="submit">Create invitation</button></form>
+    <div id="operator-link" hidden><label>Single-use invitation<input readonly></label><p>Share privately with the intended member. Expires in 48 hours.</p></div></div></section>
+</section>
+</main>
+<dialog id="facility-dialog" aria-labelledby="facility-title"><form id="facility-form" method="post"><h3 id="facility-title">Facility terms</h3>
+<div class="form-grid">
+<label>Borrower<input name="borrower" required maxlength="100"></label>
+<label>Asset class<select name="asset" required></select></label>
+<label>Stage<select name="stage" required></select></label>
+<label>Principal (CAD)<input name="principal" type="number" min="1" max="1000000000" step="0.01" required></label>
+<label>Annual nominal rate (%)<input name="rate" type="number" min="0" max="30" step="0.01" required></label>
+<label>Term (months)<input name="term" type="number" min="1" max="120" required></label>
+<label>Start date<input name="start" type="date" min="2000-01-01" max="2099-12-31" required></label>
+</div><div class="actions"><button class="button" type="submit">Save facility</button><button class="button light" type="button" id="cancel-facility">Cancel</button></div><p id="facility-error" role="alert"></p></form></dialog>
+<dialog id="lead-dialog" aria-labelledby="lead-title"><form id="lead-form" method="post"><h3 id="lead-title">Update follow-up</h3>
+<div class="form-grid"><label>Stage<select name="stage" required></select></label><label>Owner<input name="owner" required maxlength="100"></label><label>Next action date<input name="nextDate" type="date"></label></div><label>Next action or notes<textarea name="notes" rows="4" maxlength="800"></textarea></label>
+<div class="actions"><button class="button" type="submit">Save follow-up</button><button class="button light" type="button" id="cancel-lead">Cancel</button></div><p id="lead-error" role="alert"></p></form></dialog>
+</body></html>

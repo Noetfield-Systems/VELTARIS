@@ -1,10 +1,13 @@
-import {readFile} from 'node:fs/promises';
+import {readdir, readFile} from 'node:fs/promises';
 import {neon} from '@neondatabase/serverless';
 
-const url = process.env.VELTARIS_DATABASE_URL || process.env.DATABASE_URL;
-if (!url) throw new Error('Set the dedicated VELTARIS database URL before running the migration.');
-
+const url = process.env.VELTARIS_MIGRATION_DATABASE_URL || process.env.DATABASE_URL;
+if (!url) throw new Error('Set an authorized VELTARIS owner connection to run migrations.');
 const sql = neon(url);
-const migration = await readFile(new URL('../db/001_pilot_requests.sql', import.meta.url), 'utf8');
-await sql.query(migration);
-console.log('Applied pilot_requests migration.');
+const directory = new URL('../db/', import.meta.url);
+for (const filename of (await readdir(directory)).filter((name) => name.endsWith('.sql')).sort()) {
+  const migration = await readFile(new URL(filename, directory), 'utf8');
+  const statements = migration.split(/^-- statement\s*$/m).map((statement) => statement.trim()).filter(Boolean);
+  await sql.transaction(statements.map((statement) => sql.query(statement)));
+  console.log('Applied ' + filename);
+}

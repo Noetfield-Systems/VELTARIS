@@ -9,10 +9,10 @@ The work package identifiers and names below are from section 40 of the Founder-
 | WP03 | Brand Identity | Design lead | Approved brand system and usable assets | Navy, ice, and gold direction in live UI. Full brand standards pending. |
 | WP04 | Corporate Web | Product | Public corporate routes and pilot funnel | Landing, pilot request, workspace, lab and developer quickstart. |
 | WP05 | Design System | Design lead | Documented reusable responsive components | Shared CSS foundations and responsive page components. |
-| WP06 | Organization Auth | Engineering | OIDC, membership and role tests | Pending. |
-| WP07 | Tenant Isolation | Engineering | Tenant enforcement and cross-tenant denial tests | Pilot database isolated from other ventures. App tenant isolation pending. |
-| WP08 | Asset Registry | Engineering | Persistent assets with authorized change history | Sample facility register. Persistent registry pending. |
-| WP09 | Data Room | Engineering | Private files, authorized download and retention tests | Pending. |
+| WP06 | Organization Auth | Engineering | OIDC, membership and role tests | Invitation-only organization access and owner/editor/viewer roles. OIDC and MFA pending. |
+| WP07 | Tenant Isolation | Engineering | Tenant enforcement and cross-tenant denial tests | Tenant-scoped facilities and documents, enforced by server functions and verified with separate organizations. |
+| WP08 | Asset Registry | Engineering | Persistent assets with authorized change history | Persistent organization facility registry with edit versions and activity history. |
+| WP09 | Data Room | Engineering | Private files, authorized download and retention tests | Private facility document uploads and audited downloads. Per-file and organization pilot limits apply. |
 | WP10 | AI Extraction | Engineering | Reviewed source-linked extractions and quality metrics | Pending. |
 | WP11 | Financial Intelligence | Credit lead | Validated financial and risk calculations | Interactive venture assumptions. Asset intelligence pending. |
 | WP12 | Credit Engine | Engineering | Validated terms and deterministic payment calculations | Sample facility terms, schedule and maturity tests. |
@@ -20,7 +20,7 @@ The work package identifiers and names below are from section 40 of the Founder-
 | WP14 | Policy Engine | Engineering | Identity-linked, versioned transfer rules and denial evidence | Sample pause, eligibility and balance checks. |
 | WP15 | Token Factory | Engineering | Permissioned EVM test issuance and lifecycle receipt | Off-chain simulation. Contract deployment pending. |
 | WP16 | Contract Testing | Engineering | Foundry tests for token and administration | JavaScript simulator tests. Smart contract tests pending. |
-| WP17 | Portfolio Dashboard | Product | Portfolio views with controlled totals and validated exports | Sample balances, filtering and CSV export. |
+| WP17 | Portfolio Dashboard | Product | Portfolio views with controlled totals and validated exports | Private portfolio register, facility projection and CSV export, plus the separate sample workspace. |
 | WP18 | Investor Portal | Product | Authorized holdings, documents and activity | Pending. |
 | WP19 | Ledger | Finance engineering | Balanced entries, replay and correction tests | Pending. |
 | WP20 | Reconciliation | Finance engineering | Idempotent matching and exception evidence | Pilot request idempotency only. Financial reconciliation pending. |
@@ -29,11 +29,11 @@ The work package identifiers and names below are from section 40 of the Founder-
 | WP23 | Developer API | Engineering | Documented versioned routes and working sandbox | Versioned issuance simulation endpoint. |
 | WP24 | Developer Docs | Engineering | OpenAPI contract and verified quickstart | First endpoint documented and illustrated. |
 | WP25 | White-label | Product | Tenant branding and enterprise configuration | Pending. |
-| WP26 | Sales CRM | Commercial lead | Private intake plus owner, stage, next action and outcome | Pilot records persist in dedicated database. CRM pipeline UI pending. |
+| WP26 | Sales CRM | Commercial lead | Private intake plus owner, stage, next action and outcome | Private operator queue with stages, owners, next action dates and notes. |
 | WP27 | Partner Console | Partnerships lead | Authorized partner workspaces and contracts | Targets identified. Console and agreements pending. |
 | WP28 | Investor Data Room | Founder | Private material index, access and audited sharing | Inventory and target list. Private room pending. |
 | WP29 | Agent Runtime | Engineering | Persistent missions, ownership and evidence | Scheduled GitHub checks configured. Commercial and partner runtime pending. |
-| WP30 | Security & Trust | Engineering | Least privilege, data handling, restore and access tests | Separate database role and deployment headers. Customer workspace controls pending. |
+| WP30 | Security & Trust | Engineering | Least privilege, data handling, restore and access tests | Separate API database roles, scoped operations, expiring sessions and document access checks. |
 | WP31 | Production QA | Independent reviewer | Live routes, functional tests and deploy receipts | Unit and browser verification for released slices. |
 | WP32 | Growth Engine | Commercial lead | Sourced pipeline and observed funnel conversion | Public pilot request channel. Buyer discovery and conversion pending. |
 | WP33 | Customer Support | Pilot owner | Support intake, response SLA and resolution evidence | Pending. |

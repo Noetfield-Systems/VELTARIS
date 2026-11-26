@@ -4,8 +4,10 @@ Independent Canadian-origin software for private-credit operations. The temporar
 
 - [Temporary website](https://veltaris-capital.vercel.app/)
 - [Capital Lab](https://veltaris-capital.vercel.app/lab.html) and [developer quickstart](https://veltaris-capital.vercel.app/developer.html)
+- [Institutional workspace](https://veltaris-capital.vercel.app/portal.html) and [pilot operator guide](docs/portal.md)
 - [Credit workspace](https://veltaris-capital.vercel.app/workspace.html)
 - [Competitive feature matrix](docs/benchmarks.md)
+- [Prospect queue and outreach drafts](docs/pilot-outreach.md)
 - [Commercial plan, fundraising and operating ownership](docs/commercial.md)
 - [Master Blueprint](docs/master-blueprint.md) and [canonical 36-package tracker](docs/execution.md)
 - [Portability and pilot API](docs/operations.md)
