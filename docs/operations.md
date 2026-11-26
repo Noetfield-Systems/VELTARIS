@@ -25,3 +25,7 @@ Use a dedicated database in a region consistent with VELTARIS' customer commitme
 3. For any connected database, transfer or export and restore the VELTARIS database over an authenticated channel. Compare row counts and sample reference IDs using authorized access. Move secrets through the destination's secret manager.
 4. Verify the homepage, workspace, health handler and synthetic pilot insert. Make one environment the write target before switching the public address.
 5. Retain a rollback route and reconcile any intake received during cutover by the UUID reference.
+
+## Scheduled verification
+
+The GitHub workflow is configured to run daily at 16:30 UTC and on manual dispatch. It runs unit tests, verifies the homepage, sample workspace and health endpoint, and reports the read-only pilot storage status. Re-run the live checks from an operator workstation with `node scripts/smoke.mjs`. These checks preserve a technical evidence trail. Commercial evidence still needs accountable operators and private records.
