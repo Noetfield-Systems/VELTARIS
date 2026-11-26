@@ -1,0 +1,19 @@
+# Competitive feature matrix
+
+Baseline reviewed on 2026-11-26. Evidence below describes public capabilities of the named products. VELTARIS status describes the temporary release. Commercial and engineering owners revisit rows after buyer interviews and vendor releases.
+
+| Benchmark | Public capability | VELTARIS release | Next acceptance criterion | Source |
+|---|---|---|---|---|
+| Securitize | Issuance, transfer agency, administration and distribution in its applicable markets | Sample servicing export | Reconcile an issuance and transfer-agent event feed, including correction and duplicate cases | [SEC filing](https://www.sec.gov/Archives/edgar/data/2094496/000162828026073937/a424b3-securitizecorpq32026.htm) |
+| Tokeny | ERC-3643 permissioned token standard and identity-linked transfers | Planned | Test sponsor-configured eligibility, blocked transfers and recovery on a non-production chain | [Tokeny docs](https://docs.tokeny.com/docs/overview-1) |
+| Centrifuge | Multi-chain fund tokenization and distribution protocol | Sample CAD schedule only | Model subscriptions, share classes and asset-level cutoffs with deterministic reconciliation | [Centrifuge docs](https://docs.centrifuge.io/developer/protocol/overview/) |
+| Figure | Loan marketplace and capital market integrations | Sample facility intake and servicing | Validate a loan tape against an agreed buyer schema and record each rejection | [Figure Connect](https://www.figure.com/partner/figure-connect/) |
+| Taurus | Tokenization and institutional issuance APIs | Planned | Demonstrate partner adapter reconciliation and documented key ownership in a provider sandbox | [Taurus Developer Hub](https://docs.taurushq.com/protect-capital/reference/tokenization-issuance) |
+| Fireblocks | Tokenization engine for deploying and managing tokenized assets | Planned | Round-trip approval, operation ID and webhook replay with a provider sandbox | [Fireblocks Tokenization](https://www.fireblocks.com/products/tokenization) |
+| Polymesh | On-chain identity, asset rules and claims | Planned | Compare policy decisions across a permissioned chain and ERC-3643 using the same fixtures | [Polymesh identity](https://developers.polymesh.network/polymesh-docs/primitives/identity/) |
+| FrontFundr | Registered dealer and private-market subscription funnel | Software-pilot interest form, pending storage | Map issuer and investor responsibility boundaries with a prospective Canadian partner | [AMF register](https://lautorite.qc.ca/en/general-public/registers/list-of-equity-crowdfunding-portals) |
+| Carta | Integrated loan and fund administration for private credit | Sample schedule and CSV | Reconcile a servicing export to a customer-approved control total and preserve correction history | [Carta Private Credit](https://carta.com/solutions/private-credit/) |
+| Wealthsimple | Client-facing private credit updates and risk communication | Responsive workspace, sample labels, and explicit schedule assumptions | Observe five lender operators completing the same tasks and capture completion time and error rate | [Wealthsimple Advisors](https://insights.wealthsimple.com/private-credit-portfolio-update) |
+| Stripe | Hosted payments, invoicing resources and lifecycle events | Pilot scope page | Produce a VELTARIS software invoice and reconcile receipt in the venture's own accounts | [Stripe invoicing API](https://docs.stripe.com/api/invoices) |
+
+The immediate buyer comparison is Carta's private-credit workflow and Figure's loan-data quality. Partner adapters follow buyer demand and transaction design. Review each Canadian activity against its own roles, facts, and jurisdiction before enabling it. The CSA's tokenization initiative provides primary Canadian context. [CSA tokenization initiative](https://www.securities-administrators.ca/news/csa-invites-stakeholders-to-participate-in-tokenization-initiative/)

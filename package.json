@@ -1,0 +1,16 @@
+{
+  "name": "veltaris-capital",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test",
+    "migrate": "node scripts/migrate.mjs"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "1.1.0"
+  }
+}

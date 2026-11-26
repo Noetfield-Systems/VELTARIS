@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Sample Workspace | VELTARIS Capital</title>
+<link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/workspace.css">
+<script type="module" src="/workspace.mjs"></script>
+</head>
+<body>
+<header class="shell mast"><a class="brand" href="/" aria-label="VELTARIS Capital home"><i aria-hidden="true"></i><span>VELTARIS <small>CAPITAL</small></span></a><nav aria-label="Main navigation"><a class="button compact" href="/#pilot">Request a pilot ↗</a></nav></header>
+<main class="shell desk">
+  <div class="workspace-top"><div><p class="eyebrow">CAPITAL OPERATING SYSTEM</p><h1>Credit workspace</h1><p class="helper">Sample portfolio in CAD. Changes stay in this browser session. Use fictional names and amounts.</p></div><button class="button" id="new-facility" type="button">+ Add sample facility</button></div>
+  <section class="metric-grid" aria-label="Portfolio summary">
+    <article><p>Filtered principal</p><strong id="principal">—</strong></article>
+    <article><p>Projected interest</p><strong id="interest">—</strong></article>
+    <article><p>Facilities</p><strong id="count">—</strong></article>
+  </section>
+  <section class="panel">
+    <div class="panel-head"><div><h2>Facility register</h2><p>Open a facility to review or export its servicing schedule.</p></div><button type="button" id="export-portfolio" class="button light">Export CSV ↓</button></div>
+    <div class="filters"><label>Search <input id="search" type="search" placeholder="Borrower or facility ID"></label><label>Stage <select id="filter-stage"><option value="">All stages</option></select></label><label>Asset class <select id="filter-asset"><option value="">All asset classes</option></select></label></div>
+    <div class="scroll-table" tabindex="0" role="region" aria-label="Facility register table"><table><thead><tr><th>Borrower</th><th>Asset</th><th>Stage</th><th>Principal</th><th>Rate</th><th>Term</th></tr></thead><tbody id="facilities"></tbody></table></div>
+  </section>
+  <section class="panel" id="schedule" hidden>
+    <div class="panel-head"><div><p id="schedule-id" class="eyebrow"></p><h2 id="schedule-heading">Servicing schedule</h2><p>Fixed monthly interest on unchanged principal. Balloon principal at maturity. No day-count accrual, fees, or holiday adjustments.</p></div><div class="actions"><button type="button" id="edit-facility" class="button light">Edit facility</button><button type="button" id="export-schedule" class="button light">Export CSV ↓</button></div></div>
+    <div class="scroll-table" tabindex="0" role="region" aria-label="Servicing schedule table"><table><thead><tr><th>Period</th><th>Due date</th><th>Interest</th><th>Principal</th><th>Total</th></tr></thead><tbody id="payments"></tbody></table></div>
+  </section>
+  <noscript><p>Enable JavaScript to use the credit workspace.</p></noscript>
+</main>
+<dialog id="facility-dialog" aria-labelledby="dialog-title">
+  <form id="facility-form">
+    <h3 id="dialog-title">Add sample facility</h3>
+    <div class="form-grid">
+      <label>Borrower or facility name<input name="borrower" maxlength="100" required></label>
+      <label>Asset class<select name="asset" required></select></label>
+      <label>Stage<select name="stage" required></select></label>
+      <label>Principal (CAD)<input name="principal" type="number" min="1" max="1000000000" step="0.01" required></label>
+      <label>Annual interest (%)<input name="rate" type="number" min="0" max="30" step="0.01" required></label>
+      <label>Term (months)<input name="term" type="number" min="1" max="120" required></label>
+      <label>Start date<input name="start" type="date" min="2000-01-01" max="2099-12-31" required></label>
+    </div>
+    <div class="actions"><button class="button" type="submit">Save sample facility</button><button type="button" id="cancel-edit" class="button light">Cancel</button></div>
+    <p id="facility-error" role="status"></p>
+  </form>
+</dialog>
+</body>
+</html>
