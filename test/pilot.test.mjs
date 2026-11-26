@@ -49,3 +49,18 @@ test('API reports invalid requests and declines to fabricate a successful receip
     if (veltaris !== undefined) process.env.VELTARIS_DATABASE_URL = veltaris;
   }
 });
+
+test('pilot intake records bounded campaign tags and ignores unsupported values', () => {
+  const result = pilotFields({
+    name: 'Release QA', email: 'qa@example.test', company: 'Synthetic',
+    workflow: 'reporting', requestId: '28142ada-2397-446c-a763-6180c898bf68',
+    utm_source: 'linkedin', utm_medium: 'paid-social', utm_campaign: 'credit_launch',
+    utm_content: 'not an allowed tag@example.test', entry_page: '/private-credit.html',
+  });
+  assert.ok(result);
+  assert.equal(result.utm_source, 'linkedin');
+  assert.equal(result.utm_medium, 'paid-social');
+  assert.equal(result.utm_campaign, 'credit_launch');
+  assert.equal(result.utm_content, null);
+  assert.equal(result.entry_page, '/private-credit.html');
+});

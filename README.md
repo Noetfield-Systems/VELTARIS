@@ -3,6 +3,7 @@
 Independent Canadian-origin software for private-credit operations. The temporary Vercel deployment supports product demonstrations and software-pilot scoping.
 
 - [Temporary website](https://veltaris-capital.vercel.app/)
+- [Private credit campaign](https://veltaris-capital.vercel.app/private-credit.html) and [launch kit](docs/launch-campaign.md)
 - [Capital Lab](https://veltaris-capital.vercel.app/lab.html) and [developer quickstart](https://veltaris-capital.vercel.app/developer.html)
 - [Institutional workspace](https://veltaris-capital.vercel.app/portal.html) and [pilot operator guide](docs/portal.md)
 - [Credit workspace](https://veltaris-capital.vercel.app/workspace.html)

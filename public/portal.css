@@ -20,3 +20,12 @@
 #member-link input,#operator-link input{width:100%;margin-top:5px}
 #facility-error,#lead-error{margin-top:5px;font-size:13px}
 @media(max-width:650px){.lead-list,.portal-form{grid-template-columns:1fr}.panel-body{padding:13px}.workspace-top .actions{gap:8px}}
+
+/* Institutional product surfaces share the launch site's ink and warm metal palette. */
+body:has(.desk) {background:#f1f2ee}
+.desk .access-card {overflow:hidden;max-width:690px;position:relative;padding:clamp(22px,5vw,42px);border-top:4px solid #c5a875;box-shadow:0 16px 42px #111d2a12}
+.desk .access-card .eyebrow {color:#6e5638}
+.desk .workspace-top h1 {color:#111d2a}
+.desk .metric-grid article {background:#fcfdfa;border-color:#d7ddd7;box-shadow:0 5px 14px #111d2a08}
+.desk .metric-grid article strong {font-variant-numeric:tabular-nums;color:#123430}
+.desk .panel {box-shadow:0 5px 20px #111d2a06}

@@ -1,7 +1,11 @@
+import {campaignTags,carryCampaign} from './campaign.mjs';
+
 const form = document.querySelector('#pilot-form');
 const status = document.querySelector('#pilot-status');
 const button = form.querySelector('button');
 const fields = form.querySelectorAll('input, select, textarea');
+const attribution = {...campaignTags(location.href), entry_page: location.pathname};
+carryCampaign();
 let requestId = crypto.randomUUID();
 
 try {
@@ -11,6 +15,8 @@ try {
     for (const field of fields) field.disabled = false;
     button.disabled = false;
     status.textContent = '';
+  } else {
+    status.textContent = 'Pilot intake is temporarily unavailable.';
   }
 } catch {
   status.textContent = 'Pilot intake is temporarily unavailable.';
@@ -33,7 +39,7 @@ form.addEventListener('submit', async (event) => {
     const response = await fetch('/api/pilot', {
       method: 'POST',
       headers: {'content-type': 'application/json'},
-      body: JSON.stringify({...payload, requestId: submittedId}),
+      body: JSON.stringify({...payload, ...attribution, requestId: submittedId}),
       signal: AbortSignal.timeout(12000),
     });
     const result = await response.json();

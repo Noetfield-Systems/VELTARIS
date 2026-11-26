@@ -1,3 +1,4 @@
+import {carryCampaign} from './campaign.mjs';
 import {ASSETS, STAGES, SAMPLE, facilityFromInput, paymentSchedule, csv} from './credit.mjs';
 
 const byId = (id) => document.getElementById(id);
@@ -161,3 +162,17 @@ byId('export-schedule').addEventListener('click', () => {
 });
 
 render();
+
+const demoMatch = byId('demo-match');
+if (demoMatch) demoMatch.addEventListener('click', () => {
+  const journal = byId('demo-journal');
+  const matched = journal.hidden;
+  journal.hidden = !matched;
+  byId('demo-state').textContent = matched ? 'Matched' : 'Unmatched';
+  byId('demo-result').textContent = matched
+    ? 'Sample match complete. Journal debits and credits both total C$12,500.00.'
+    : 'Statement line DEMO-042 · C$12,500.00';
+  demoMatch.textContent = matched ? 'Reset sample' : 'Match sample receipt';
+});
+
+carryCampaign();

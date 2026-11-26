@@ -49,8 +49,10 @@ export default async function handler(request, response) {
 
   try {
     const sql = neon(databaseUrl, {fetchOptions: {signal: AbortSignal.timeout(8000)}});
-    await sql`INSERT INTO pilot_requests (id, name, email, company, workflow, context)
-      VALUES (${input.requestId}, ${input.name}, ${input.email}, ${input.company}, ${input.workflow}, ${input.context})
+    await sql`INSERT INTO pilot_requests
+      (id, name, email, company, workflow, context, utm_source, utm_medium, utm_campaign, utm_content, entry_page)
+      VALUES (${input.requestId}, ${input.name}, ${input.email}, ${input.company}, ${input.workflow}, ${input.context},
+        ${input.utm_source}, ${input.utm_medium}, ${input.utm_campaign}, ${input.utm_content}, ${input.entry_page})
       ON CONFLICT (id) DO NOTHING`;
     return json(response, 201, {reference: input.requestId});
   } catch (error) {

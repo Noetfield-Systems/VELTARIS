@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Sample Workspace | VELTARIS Capital</title>
-<link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/workspace.css">
+<link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/workspace.css"><link rel="stylesheet" href="/servicing.css">
 <script type="module" src="/workspace.mjs"></script>
 </head>
 <body>
@@ -15,6 +15,12 @@
     <article><p>Filtered principal</p><strong id="principal">—</strong></article>
     <article><p>Projected interest</p><strong id="interest">—</strong></article>
     <article><p>Facilities</p><strong id="count">—</strong></article>
+  </section>
+  <section class="panel servicing" aria-labelledby="demo-match-title">
+    <div class="servicing-header"><div><p class="eyebrow">INTERACTIVE DEMO</p><h2 id="demo-match-title">From receipt to journal</h2><p class="helper">Match one illustrative bank line to a recorded repayment.</p></div><button class="button" type="button" id="demo-match">Match sample receipt</button></div>
+    <dl class="servic-metrics"><div><dt>Receipt amount</dt><dd>C$12,500.00</dd></div><div><dt>Principal</dt><dd>C$10,000.00</dd></div><div><dt>Interest</dt><dd>C$2,500.00</dd></div><div><dt>Statement status</dt><dd id="demo-state">Unmatched</dd></div></dl>
+    <p id="demo-result" class="helper" role="status">Statement line DEMO-042 · C$12,500.00</p>
+    <div class="servicing-register scroll-table" id="demo-journal" tabindex="0" role="region" aria-label="Sample journal" hidden><table><thead><tr><th scope="col">Account</th><th scope="col">Debit (CAD)</th><th scope="col">Credit (CAD)</th></tr></thead><tbody><tr><td>Cash</td><td>12,500.00</td><td>0.00</td></tr><tr><td>Principal receivable</td><td>0.00</td><td>10,000.00</td></tr><tr><td>Interest income</td><td>0.00</td><td>2,500.00</td></tr></tbody></table></div>
   </section>
   <section class="panel">
     <div class="panel-head"><div><h2>Facility register</h2><p>Open a facility to review or export its servicing schedule.</p></div><button type="button" id="export-portfolio" class="button light">Export CSV ↓</button></div>

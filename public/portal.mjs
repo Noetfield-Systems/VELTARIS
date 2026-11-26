@@ -77,6 +77,8 @@ function renderOperator(data) {
     card.className = 'lead-entry';
     const detail = element('p', lead.name + ' · ' + lead.email);
     const metadata = element('p', lead.workflow + ' · ' + lead.stage + ' · ' + lead.created_at.slice(0,10));
+    const attribution = [lead.utm_source,lead.utm_medium,lead.utm_campaign,lead.utm_content].filter(Boolean);
+    const source = attribution.length ? element('p','Campaign · '+attribution.join(' · ')) : null;
     const follow = element('p', [lead.owner, lead.next_date, lead.notes].filter(Boolean).join(' · '));
     const button = element('button','Update follow-up');
     button.type = 'button';
@@ -90,6 +92,7 @@ function renderOperator(data) {
       byId('lead-dialog').showModal();
     });
     card.append(element('h3',lead.company),detail,metadata,element('p',lead.context),follow,button);
+    if (source) card.insertBefore(source,button);
     list.append(card);
   }
   const select = provision.elements.organizationId;

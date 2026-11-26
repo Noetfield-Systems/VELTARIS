@@ -18,3 +18,7 @@
 .servicing-state[data-status="Reversed"] {background:#e9eaed;color:#414850}
 #servicing-status:empty {display:none}
 @media (max-width:650px){.servicing-header,.servicing-footer{align-items:flex-start;flex-direction:column}.servic-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+#demo-journal{margin-top:10px}
+#demo-journal table{min-width:370px}
+#demo-match-title{margin:0}
