@@ -1,3 +1,4 @@
+import {mountServicing} from './servicing.mjs';
 import {ASSETS, STAGES, csv, paymentSchedule} from './credit.mjs';
 
 const byId = (id) => document.getElementById(id);
@@ -13,15 +14,16 @@ const state = {data:null, selected:null, edit:null, lead:null};
 const facilityForm = form('facility-form');
 const leadForm = form('lead-form');
 const provision = form('provision');
+const servicing = mountServicing(api,downloadCsv);
 
 options(facilityForm.elements.asset, ASSETS);
 options(facilityForm.elements.stage, STAGES);
 options(leadForm.elements.stage, leadStages);
 
-async function api(body) {
+async function api(body, suffix = '') {
   const request = {cache:'no-store',signal:AbortSignal.timeout(22000)};
   if (body) Object.assign(request, {method:'POST', headers:{'content-type':'application/json'},body:JSON.stringify(body)});
-  const response = await fetch('/api/portal',request);
+  const response = await fetch('/api/portal'+suffix,request);
   const payload = await response.json();
   if (!response.ok) throw Object.assign(new Error(payload.message || 'Request could not be completed.'), {status:response.status});
   return payload;
@@ -139,7 +141,8 @@ function renderFacilities() {
 function renderDetails() {
   const facility = state.data.facilities.find((item) => item.id === state.selected);
   byId('details').hidden = !facility;
-  if (!facility) return;
+  if (!facility) { servicing.clear(); return; }
+  servicing.open(facility,state.data.role);
   byId('borrower').textContent = facility.borrower;
   const schedule = byId('payments');
   schedule.replaceChildren();
@@ -185,6 +188,7 @@ function show(data) {
     clearInvite('member-link');
     clearInvite('operator-link');
     clearInvite('return-link');
+    servicing.clear();
     for (const id of ['facilities','payments','documents','activity','leads']) byId(id).replaceChildren();
     for (const id of ['organization','member','lead-title','borrower','total','count','documents-count','lead-count']) byId(id).textContent = '';
     for (const id of ['facility-dialog','lead-dialog']) byId(id).close();

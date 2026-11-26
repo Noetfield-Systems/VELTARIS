@@ -1,3 +1,4 @@
+import {servicingInput} from '../lib/servicing.mjs';
 import {neon} from '@neondatabase/serverless';
 import {facilityFromInput} from '../public/credit.mjs';
 import {cookie, digest, documentPayload, isId, isToken, LEAD_STAGES, parseDate, requiredText, sessionKey, token} from '../lib/portal.mjs';
@@ -7,6 +8,13 @@ const errors = {
   forbidden: [403, 'Your workspace role does not allow this action.'],
   not_found: [404, 'The requested record is unavailable.'],
   conflict: [409, 'This facility changed. Refresh before saving again.'],
+  receipt_duplicate: [409, 'This receipt reference belongs to a different entry.'],
+  receipt_terms: [409, 'Use a period on the facility schedule and a date between its start and today.'],
+  principal_exceeded: [409, 'Principal received would exceed the facility principal.'],
+  statement_mismatch: [409, 'The statement amount must match the receipt and its date must be between receipt and today.'],
+  statement_duplicate: [409, 'This statement reference is already matched.'],
+  already_matched: [409, 'This receipt has already been reconciled.'],
+  receipt_reversed: [409, 'This receipt has previously been reversed.'],
   capacity: [409, 'This workspace has reached its pilot storage limit.'],
 };
 
@@ -36,6 +44,10 @@ function command(body) {
   switch (body.action) {
     case 'return-invite':
       return null;
+    case 'book-receipt':
+    case 'match-receipt':
+    case 'reverse-receipt':
+      return {id: existingId(body.id), ...servicingInput(body)};
     case 'facility': {
       const id = body.id == null ? null : existingId(body.id);
       if (id && (!Number.isInteger(body.version) || body.version < 1 || body.version > 2147483647)) throw new Error('Refresh the facility before editing.');
@@ -94,7 +106,13 @@ export default async function handler(req, res) {
   try {
     const sql = neon(databaseUrl, {fetchOptions:{signal:AbortSignal.timeout(12000)}});
     if (req.method === 'GET') {
-      const documentId = new URL(req.url, 'https://workspace.invalid').searchParams.get('document');
+      const params = new URL(req.url, 'https://workspace.invalid').searchParams;
+      const servicingId = params.get('servicing');
+      if (servicingId) {
+        if (!isId(servicingId)) return reply(res, {error:'not_found'});
+        return reply(res, await query(sql`SELECT portal.servicing(${key},${servicingId}::uuid) AS result`));
+      }
+      const documentId = params.get('document');
       if (!documentId) return reply(res, await query(sql`SELECT portal.dashboard(${key}) AS result`));
       if (!isId(documentId)) return reply(res, {error:'not_found'});
       const document = await query(sql`SELECT portal.download_document(${key},${documentId}::uuid) AS result`);
@@ -123,6 +141,12 @@ export default async function handler(req, res) {
         if (!result || result.error) return reply(res, result);
         return reply(res, {invitation});
       }
+      case 'book-receipt':
+        return reply(res, await query(sql`SELECT portal.book_receipt(${key},${input.id}::uuid,${input.ref},${input.date}::date,${input.period}::int,${input.principal}::bigint,${input.interest}::bigint) AS result`));
+      case 'match-receipt':
+        return reply(res, await query(sql`SELECT portal.match_receipt(${key},${input.id}::uuid,${input.ref},${input.date}::date,${input.amount}::bigint) AS result`));
+      case 'reverse-receipt':
+        return reply(res, await query(sql`SELECT portal.reverse_receipt(${key},${input.id}::uuid,${input.reason}) AS result`));
       case 'facility':
         return reply(res, await query(sql`SELECT portal.save_facility(${key},${input.id}::uuid,${input.version}::int,${JSON.stringify(input)}::jsonb) AS result`));
       case 'upload':
@@ -137,6 +161,7 @@ export default async function handler(req, res) {
         return reply(res, await query(sql`SELECT portal.follow_up(${key},${input.id}::uuid,${input.stage},${input.owner},${input.nextDate}::date,${input.notes}) AS result`));
     }
   } catch (error) {
+    if (error.code === 'P0409') return res.status(409).json({message:'Principal, rate, term and start date are locked after a repayment is recorded.'});
     if (error.code === '23502' || error.code === '23514') return res.status(400).json({message:'Check the required workspace fields.'});
     console.error('portal_db_error', {code: error.code || 'unavailable'});
     return res.status(503).json({message:'The private workspace is temporarily unavailable.'});

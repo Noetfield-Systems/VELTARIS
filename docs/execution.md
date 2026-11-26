@@ -22,9 +22,9 @@ The work package identifiers and names below are from section 40 of the Founder-
 | WP16 | Contract Testing | Engineering | Foundry tests for token and administration | JavaScript simulator tests. Smart contract tests pending. |
 | WP17 | Portfolio Dashboard | Product | Portfolio views with controlled totals and validated exports | Private portfolio register, facility projection and CSV export, plus the separate sample workspace. |
 | WP18 | Investor Portal | Product | Authorized holdings, documents and activity | Pending. |
-| WP19 | Ledger | Finance engineering | Balanced entries, replay and correction tests | Pending. |
-| WP20 | Reconciliation | Finance engineering | Idempotent matching and exception evidence | Pilot request idempotency only. Financial reconciliation pending. |
-| WP21 | Servicing | Credit operations | Verified repayments, exceptions and lifecycle evidence | Sample cash-flow schedule. Actual servicing pending. |
+| WP19 | Ledger | Finance engineering | Balanced entries, replay and correction tests | Balanced CAD servicing journal, compensating reversals and CSV. Fund GL and accrual accounting pending. |
+| WP20 | Reconciliation | Finance engineering | Idempotent matching and exception evidence | Manual exact amount and unique reference matching, duplicate controls, and an unmatched queue. |
+| WP21 | Servicing | Credit operations | Verified repayments, exceptions and lifecycle evidence | Projected cash flow and actual external receipt register with principal and interest allocation. |
 | WP22 | Payments & Billing | Founder and finance | Dedicated software invoice and reconciled settlement | Pilot request intake. Payment account, invoice and receipt pending. |
 | WP23 | Developer API | Engineering | Documented versioned routes and working sandbox | Versioned issuance simulation endpoint. |
 | WP24 | Developer Docs | Engineering | OpenAPI contract and verified quickstart | First endpoint documented and illustrated. |

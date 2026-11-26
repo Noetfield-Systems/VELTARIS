@@ -8,7 +8,7 @@ The operator passes a single-use activation link privately to the named recipien
 
 Each organization can hold up to 100 facilities and 20 documents. Documents accept PDF, CSV and UTF-8 text, up to 2 MiB each, and are stored as Postgres byte arrays within the dedicated VELTARIS database. Document responses are authenticated, served as downloads, and recorded in the workspace activity feed. Source documents can contain additional specialist confidentiality or location requirements. Agree the pilot's scope and retention before loading live borrower records. Pilot documents are stored in the dedicated Neon database in the United States.
 
-The schedule is a projection using the interest-only calculation and whole-cent amounts. It supports portfolio and single-facility CSV export. It does not record cleared repayments or reconciled financial ledger entries.
+The schedule is a projection using the interest-only calculation and whole-cent amounts. It supports portfolio and single-facility CSV export. Use the separate [loan servicing section](servicing.md) to register externally cleared repayments, match statement lines, and export the balanced servicing subledger.
 
 ## Operations and restoration
 
