@@ -1,0 +1,14 @@
+# VELTARIS Capital
+
+> Private-credit operations software for Canadian lending teams. Public capabilities include a fictional workspace, a stateless issuance simulator, and software pilot intake.
+
+- [Capability discovery](https://veltaris-capital.vercel.app/.well-known/uhail.json)
+- [Issuance simulator OpenAPI](https://veltaris-capital.vercel.app/v1/openapi.json)
+- [Developer quickstart](https://veltaris-capital.vercel.app/developer.html)
+- [Application health](https://veltaris-capital.vercel.app/api/health)
+- [Pilot intake health](https://veltaris-capital.vercel.app/api/pilot)
+- [Interactive sample](https://veltaris-capital.vercel.app/workspace.html)
+- [Institutional software pilot](https://veltaris-capital.vercel.app/private-credit.html#pilot)
+- [Invitation-only organization portal](https://veltaris-capital.vercel.app/portal.html)
+
+The sandbox operates off-chain using sample inputs. The organization portal uses tenant-scoped credentials for workspaces and operational records.

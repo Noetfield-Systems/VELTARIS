@@ -1,0 +1,15 @@
+{
+  "name": "VELTARIS Capital",
+  "url": "https://veltaris-capital.vercel.app/",
+  "mode": "private-credit-software-pilot",
+  "language": "en-CA",
+  "openapi": "https://veltaris-capital.vercel.app/v1/openapi.json",
+  "capabilities": [
+    {"id":"application_health","method":"GET","url":"https://veltaris-capital.vercel.app/api/health","authentication":"public","effect":"read"},
+    {"id":"pilot_intake_readiness","method":"GET","url":"https://veltaris-capital.vercel.app/api/pilot","authentication":"public","effect":"read"},
+    {"id":"issuance_simulation","method":"POST","url":"https://veltaris-capital.vercel.app/v1/issuance/simulate","authentication":"public","effect":"stateless_sandbox"},
+    {"id":"sample_credit_workspace","url":"https://veltaris-capital.vercel.app/workspace.html","authentication":"public","effect":"interactive_sample"},
+    {"id":"pilot_request","url":"https://veltaris-capital.vercel.app/private-credit.html#pilot","authentication":"human_form","effect":"software_inquiry"},
+    {"id":"organization_credit_operations","url":"https://veltaris-capital.vercel.app/portal.html","authentication":"organization_invitation","effect":"tenant_scoped"}
+  ]
+}
