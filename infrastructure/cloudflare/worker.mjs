@@ -13,7 +13,7 @@ function response(body, status = 200, cache = 'no-store') {
 async function probe(path, accept, fetcher) {
   try {
     const result = await fetcher(application + path, {
-      redirect: 'error', signal: AbortSignal.timeout(5500),
+      redirect: 'manual', signal: AbortSignal.timeout(5500),
       headers: {accept: 'application/json'},
     });
     return result.ok && accept(await result.json());

@@ -18,7 +18,7 @@ test('check requests fixed VELTARIS routes and writes counters without payloads'
   };
   const fake=async (url,options) => {
     calls.push(url);
-    assert.equal(options.redirect,'error');
+    assert.equal(options.redirect,'manual');
     return Response.json(url.endsWith('/pilot')?{available:false,secret:'ignored'}:{status:'ok',service:'veltaris-capital'});
   };
   assert.deepEqual(await check(db,'release','release:1',fake,()=>100),{id:'release:1'});
